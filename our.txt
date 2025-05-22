@@ -1,0 +1,91 @@
+        Age  Cholesterol  ...  Systolic blood pressure  Diastolic blood pressure
+0  0.595506     0.314286  ...                 0.600000                  0.534884
+1  0.595506     0.096429  ...                 0.574194                  0.569767
+2  0.595506     0.189286  ...                 0.187097                  0.674419
+3  0.078652     0.960714  ...                 0.645161                  0.593023
+4  0.078652     0.792857  ...                 0.251613                  0.383721
+
+[5 rows x 27 columns]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 9651 entries, 0 to 9650
+Data columns (total 27 columns):
+ #   Column                           Non-Null Count  Dtype  
+---  ------                           --------------  -----  
+ 0   Age                              9651 non-null   float64
+ 1   Cholesterol                      9651 non-null   float64
+ 2   Heart rate                       9651 non-null   float64
+ 3   Diabetes                         9377 non-null   float64
+ 4   Family History                   9377 non-null   float64
+ 5   Smoking                          9377 non-null   float64
+ 6   Obesity                          9377 non-null   float64
+ 7   Alcohol Consumption              9377 non-null   float64
+ 8   Exercise Hours Per Week          9651 non-null   float64
+ 9   Diet                             9651 non-null   int64  
+ 10  Previous Heart Problems          9377 non-null   float64
+ 11  Medication Use                   9377 non-null   float64
+ 12  Stress Level                     9377 non-null   float64
+ 13  Sedentary Hours Per Day          9651 non-null   float64
+ 14  Income                           9651 non-null   float64
+ 15  BMI                              9651 non-null   float64
+ 16  Triglycerides                    9651 non-null   float64
+ 17  Physical Activity Days Per Week  9377 non-null   float64
+ 18  Sleep Hours Per Day              9651 non-null   float64
+ 19  Heart Attack Risk (Binary)       9651 non-null   float64
+ 20  Blood sugar                      9651 non-null   float64
+ 21  CK-MB                            9651 non-null   float64
+ 22  Troponin                         9651 non-null   float64
+ 23  Heart Attack Risk (Text)         9651 non-null   int64  
+ 24  Gender                           9651 non-null   object 
+ 25  Systolic blood pressure          9651 non-null   float64
+ 26  Diastolic blood pressure         9651 non-null   float64
+dtypes: float64(24), int64(2), object(1)
+memory usage: 2.0+ MB
+None
+               Age  ...  Diastolic blood pressure
+count  9651.000000  ...               9651.000000
+mean      0.450254  ...                  0.497553
+std       0.231154  ...                  0.172033
+min       0.000000  ...                  0.000000
+25%       0.258427  ...                  0.348837
+50%       0.460674  ...                  0.500000
+75%       0.640449  ...                  0.651163
+max       1.000000  ...                  1.000000
+
+[8 rows x 26 columns]
+Dataset Columns: ['Age', 'Cholesterol', 'Heart rate', 'Diabetes', 'Family History', 'Smoking', 'Obesity', 'Alcohol Consumption', 'Exercise Hours Per Week', 'Diet', 'Previous Heart Problems', 'Medication Use', 'Stress Level', 'Sedentary Hours Per Day', 'Income', 'BMI', 'Triglycerides', 'Physical Activity Days Per Week', 'Sleep Hours Per Day', 'Heart Attack Risk (Binary)', 'Blood sugar', 'CK-MB', 'Troponin', 'Heart Attack Risk (Text)', 'Systolic blood pressure', 'Diastolic blood pressure', 'Gender_1.0', 'Gender_Female', 'Gender_Male']
+Random Forest Model Accuracy: 0.7742
+
+Classification Report (Random Forest):
+               precision    recall  f1-score   support
+
+         0.0       0.74      0.84      0.79      1207
+         1.0       0.82      0.71      0.76      1207
+
+    accuracy                           0.77      2414
+   macro avg       0.78      0.77      0.77      2414
+weighted avg       0.78      0.77      0.77      2414
+
+                            Feature  Importance
+13                           Income    0.081622
+7           Exercise Hours Per Week    0.080740
+14                              BMI    0.078475
+12          Sedentary Hours Per Day    0.078303
+18          Systolic blood pressure    0.076432
+19         Diastolic blood pressure    0.074885
+16              Sleep Hours Per Day    0.074813
+0                               Age    0.073889
+1                        Heart rate    0.073421
+11                     Stress Level    0.048564
+15  Physical Activity Days Per Week    0.046147
+8                              Diet    0.034468
+17                      Blood sugar    0.032548
+10                   Medication Use    0.020144
+9           Previous Heart Problems    0.019585
+2                          Diabetes    0.019149
+5                           Obesity    0.018869
+6               Alcohol Consumption    0.018626
+3                    Family History    0.017982
+22                      Gender_Male    0.009886
+21                    Gender_Female    0.008324
+20                       Gender_1.0    0.006609
+4                           Smoking    0.006519
