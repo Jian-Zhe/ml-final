@@ -118,11 +118,17 @@ for i in nums:
 for i in cats[:-1]:
     df[i] = LabelEncoder().fit_transform(df[i].values)
 
-x = df.iloc[:, :-1].values
-y = df.iloc[:, -1].values
+target_col = "Heart Attack Risk (Binary)"
+x = df.drop(columns=[target_col, "Heart Attack Risk (Text)"])
+y = df[target_col]
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=42, test_size=0.2)
 
 x_train, y_train = SMOTE().fit_resample(x_train, y_train)
+
+# for i in range(x_train.shape[1]):
+#     print(x_train[0, i])
+
+print(x_train.shape)
 
 training_classification()

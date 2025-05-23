@@ -12,6 +12,8 @@ from sklearn.inspection import permutation_importance
 df = pd.read_csv("heart-attack-risk-prediction-dataset.csv")
 
 # print(df.head())
+# print(df.columns.tolist())
+# exit(0)
 # print(df.info())
 
 # print(df.describe())
@@ -36,8 +38,6 @@ if target_column not in df.columns:
 X = df.drop(columns=['Heart Attack Risk (Binary)', 'Heart Attack Risk (Text)',
                      "Cholesterol", "Triglycerides", "CK-MB", "Troponin",
                      "Gender_Female", "Family History"])
-# X = df.drop(columns=[target_column, "Heart Attack Risk (Text)", "Cholesterol", "Triglycerides", "CK-MB", "Troponin"])
-# X = df.drop(columns=[target_column, "Heart Attack Risk (Text)", "Gender_1.0", "Smoking", "Gender_Female", "Gender_Male", "Family History", "Medication Use", "Alcohol Consumption", "Previous Heart Problems", "Obesity", "Diabetes", "Blood sugar"])
 y = df[target_column]
 
 random_state = 42
@@ -57,14 +57,14 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 rf = RandomForestClassifier(
-    n_estimators=800,
+    # n_estimators=800,
     random_state=random_state,
-    min_samples_split=6,
-    min_samples_leaf=1,
-    max_depth=None,
-    bootstrap=False,
-    class_weight=None,
-    max_features="sqrt"
+    # min_samples_split=6,
+    # min_samples_leaf=1,
+    # max_depth=None,
+    # bootstrap=False,
+    # class_weight=None,
+    # max_features="sqrt"
 )
 
 # param_grid = {
