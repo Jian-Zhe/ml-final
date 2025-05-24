@@ -1,0 +1,11 @@
+{'subsample': 0.6, 'scale_pos_weight': 3, 'reg_lambda': 2, 'reg_alpha': 0, 'n_estimators': 500, 'min_child_weight': 1, 'learning_rate': 0.5, 'gamma': 0.5}
+XGBoost Accuracy: 0.5548654244306418
+              precision    recall  f1-score   support
+
+         0.0       0.68      0.60      0.64       633
+         1.0       0.38      0.47      0.42       333
+
+    accuracy                           0.55       966
+   macro avg       0.53      0.53      0.53       966
+weighted avg       0.58      0.55      0.56       966
+

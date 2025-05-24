@@ -1,0 +1,14 @@
+Train 資料 shape： (10251, 21)
+Test 資料 shape： (877, 21)
+
+Train 類別分布：
+Heart Attack Risk (Binary)
+0    6244
+1    4007
+Name: count, dtype: int64
+
+Test 類別分布：
+Heart Attack Risk (Binary)
+0    563
+1    314
+Name: count, dtype: int64

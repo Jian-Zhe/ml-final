@@ -1,0 +1,63 @@
+Libraries imported successfully.
+Dataset shape: (10000, 26)
+Missing values per column:
+Patient_ID                 0
+State_Name                 0
+Age                        0
+Gender                     0
+Diabetes                   0
+Hypertension               0
+Obesity                    0
+Smoking                    0
+Alcohol_Consumption        0
+Physical_Activity          0
+Diet_Score                 0
+Cholesterol_Level          0
+Triglyceride_Level         0
+LDL_Level                  0
+HDL_Level                  0
+Systolic_BP                0
+Diastolic_BP               0
+Air_Pollution_Exposure     0
+Family_History             0
+Stress_Level               0
+Healthcare_Access          0
+Heart_Attack_History       0
+Emergency_Response_Time    0
+Annual_Income              0
+Health_Insurance           0
+Heart_Attack_Risk          0
+dtype: int64
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10000 entries, 0 to 9999
+Data columns (total 26 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   Patient_ID               10000 non-null  int64 
+ 1   State_Name               10000 non-null  object
+ 2   Age                      10000 non-null  int64 
+ 3   Gender                   10000 non-null  object
+ 4   Diabetes                 10000 non-null  int64 
+ 5   Hypertension             10000 non-null  int64 
+ 6   Obesity                  10000 non-null  int64 
+ 7   Smoking                  10000 non-null  int64 
+ 8   Alcohol_Consumption      10000 non-null  int64 
+ 9   Physical_Activity        10000 non-null  int64 
+ 10  Diet_Score               10000 non-null  int64 
+ 11  Cholesterol_Level        10000 non-null  int64 
+ 12  Triglyceride_Level       10000 non-null  int64 
+ 13  LDL_Level                10000 non-null  int64 
+ 14  HDL_Level                10000 non-null  int64 
+ 15  Systolic_BP              10000 non-null  int64 
+ 16  Diastolic_BP             10000 non-null  int64 
+ 17  Air_Pollution_Exposure   10000 non-null  int64 
+ 18  Family_History           10000 non-null  int64 
+ 19  Stress_Level             10000 non-null  int64 
+ 20  Healthcare_Access        10000 non-null  int64 
+ 21  Heart_Attack_History     10000 non-null  int64 
+ 22  Emergency_Response_Time  10000 non-null  int64 
+ 23  Annual_Income            10000 non-null  int64 
+ 24  Health_Insurance         10000 non-null  int64 
+ 25  Heart_Attack_Risk        10000 non-null  int64 
+dtypes: int64(24), object(2)
+memory usage: 2.0+ MB

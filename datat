@@ -1,0 +1,63 @@
+Libraries imported successfully.
+Dataset shape: (8763, 26)
+Missing values per column:
+Patient ID                         0
+Age                                0
+Sex                                0
+Cholesterol                        0
+Blood Pressure                     0
+Heart Rate                         0
+Diabetes                           0
+Family History                     0
+Smoking                            0
+Obesity                            0
+Alcohol Consumption                0
+Exercise Hours Per Week            0
+Diet                               0
+Previous Heart Problems            0
+Medication Use                     0
+Stress Level                       0
+Sedentary Hours Per Day            0
+Income                             0
+BMI                                0
+Triglycerides                      0
+Physical Activity Days Per Week    0
+Sleep Hours Per Day                0
+Country                            0
+Continent                          0
+Hemisphere                         0
+Heart Attack Risk                  0
+dtype: int64
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8763 entries, 0 to 8762
+Data columns (total 26 columns):
+ #   Column                           Non-Null Count  Dtype   
+---  ------                           --------------  -----   
+ 0   Patient ID                       8763 non-null   category
+ 1   Age                              8763 non-null   int64   
+ 2   Sex                              8763 non-null   category
+ 3   Cholesterol                      8763 non-null   int64   
+ 4   Blood Pressure                   8763 non-null   category
+ 5   Heart Rate                       8763 non-null   int64   
+ 6   Diabetes                         8763 non-null   int64   
+ 7   Family History                   8763 non-null   int64   
+ 8   Smoking                          8763 non-null   int64   
+ 9   Obesity                          8763 non-null   int64   
+ 10  Alcohol Consumption              8763 non-null   int64   
+ 11  Exercise Hours Per Week          8763 non-null   float64 
+ 12  Diet                             8763 non-null   category
+ 13  Previous Heart Problems          8763 non-null   int64   
+ 14  Medication Use                   8763 non-null   int64   
+ 15  Stress Level                     8763 non-null   int64   
+ 16  Sedentary Hours Per Day          8763 non-null   float64 
+ 17  Income                           8763 non-null   int64   
+ 18  BMI                              8763 non-null   float64 
+ 19  Triglycerides                    8763 non-null   int64   
+ 20  Physical Activity Days Per Week  8763 non-null   int64   
+ 21  Sleep Hours Per Day              8763 non-null   int64   
+ 22  Country                          8763 non-null   category
+ 23  Continent                        8763 non-null   category
+ 24  Hemisphere                       8763 non-null   category
+ 25  Heart Attack Risk                8763 non-null   int64   
+dtypes: category(7), float64(3), int64(16)
+memory usage: 1.8 MB

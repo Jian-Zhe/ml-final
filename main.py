@@ -8,15 +8,16 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from imblearn.combine import SMOTETomek
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.inspection import permutation_importance
+from ydata_profiling import ProfileReport
 
 df = pd.read_csv("heart-attack-risk-prediction-dataset.csv")
 
-# print(df.head())
-# print(df.columns.tolist())
-# exit(0)
-# print(df.info())
+# 產生報告
+# profile = ProfileReport(df, title="Heart Attack Dataset Report", explorative=True)
 
-# print(df.describe())
+# # 輸出成 HTML
+# profile.to_file("heart_attack_data_profile.html")
+# exit(0)
 
 df = df.copy()
 for column in df.columns:
@@ -37,7 +38,7 @@ if target_column not in df.columns:
 ## "Cholesterol", "Triglycerides", "CK-MB", "Troponin", "Smoking"
 X = df.drop(columns=['Heart Attack Risk (Binary)', 'Heart Attack Risk (Text)',
                      "Cholesterol", "Triglycerides", "CK-MB", "Troponin",
-                     "Gender_Female", "Family History"])
+                     "Diastolic blood pressure"])
 y = df[target_column]
 
 random_state = 42
@@ -50,62 +51,51 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, r
 smote_tomek = SMOTETomek(random_state=random_state)
 X_train, y_train = smote_tomek.fit_resample(X_train, y_train)
 
+# counts = y_train.value_counts()
+# print(counts)
+# exit(0)
+
 feature_names = X.columns.tolist()
 
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+# scaler = StandardScaler()
+# X_train = scaler.fit_transform(X_train)
+# X_test = scaler.transform(X_test)
 
 rf = RandomForestClassifier(
-    # n_estimators=800,
+    n_estimators=150,
     random_state=random_state,
-    # min_samples_split=6,
-    # min_samples_leaf=1,
-    # max_depth=None,
-    # bootstrap=False,
-    # class_weight=None,
-    # max_features="sqrt"
+    max_depth=None,
+    bootstrap=False,
 )
 
-# param_grid = {
-#     'n_estimators': [800],
-#     'max_features': ['sqrt', 'log2', 0.3, None],
-#     'bootstrap': [True, False],
-#     'class_weight': [None, 'balanced'],
-#     'min_samples_split': [6],
-#     'min_samples_leaf': [1]
-# }
-
-# random_search = RandomizedSearchCV(rf, param_grid, n_iter=10, cv=5, n_jobs=-1, random_state=42)
-# random_search.fit(X_train, y_train)
-# print(random_search.best_params_)
+# evalution
+from sklearn.metrics import classification_report, precision_recall_curve, average_precision_score, f1_score
 
 rf.fit(X_train, y_train)
-y_pred_rf = rf.predict(X_test)
+y_proba_rf = rf.predict_proba(X_test)[:, 1]
 
-accuracy_rf = accuracy_score(y_test, y_pred_rf)
-print(f"Random Forest Model Accuracy: {accuracy_rf:.4f}")
-print("\nClassification Report (Random Forest):\n", classification_report(y_test, y_pred_rf))
+y_pred_rf = (y_proba_rf >= 0.27).astype(int)
+
+# 評估
+print("F1-score:", f1_score(y_test, y_pred_rf))
+print("Classification Report:\n", classification_report(y_test, y_pred_rf))
+
+# Average Precision (PR AUC)
+ap_score = average_precision_score(y_test, y_proba_rf)
+print("Average Precision (PR AUC):", ap_score)
 
 
-# Get feature importance
-# importances = rf.feature_importances_
+###############################################
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
 
-# Create DataFrame for better visualization
-# feat_importance_df = pd.DataFrame({'Feature': X.columns, 'Importance': importances})
-# feat_importance_df = feat_importance_df.sort_values(by='Importance', ascending=False)
+# 計算混淆矩陣
+cm = confusion_matrix(y_test, y_pred_rf)
 
-# print(feat_importance_df)
-
-# result = permutation_importance(rf, X_train, y_train, n_repeats=10, random_state=42)
-# sorted_idx = result.importances_mean.argsort()[::-1]
-# sorted_features = [feature_names[i] for i in sorted_idx]
-
-# plt.figure(figsize=(12, 6))
-# plt.bar(range(len(sorted_idx)), result.importances_mean[sorted_idx],
-#         yerr=result.importances_std[sorted_idx])
-# plt.xticks(range(len(sorted_idx)), sorted_features, rotation=90)
-# plt.title("Permutation Feature Importance")
-# plt.ylabel("Mean Decrease in Accuracy")
-# plt.tight_layout()
-# plt.show()
+# 畫出混淆矩陣熱圖
+plt.figure(figsize=(6,5))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=[0,1], yticklabels=[0,1])
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.title('Confusion Matrix')
+plt.show()
